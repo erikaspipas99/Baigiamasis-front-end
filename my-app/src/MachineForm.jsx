@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { updateMachine } from "./UpdateMachine";
 
 export const MachineForm = () => {
   const [machine, setMachine] = useState({
@@ -80,7 +81,12 @@ export const MachineForm = () => {
       <h2>Machine List</h2>
       <ul>
         {machineList.map((machines) => {
-          return <li key={machines._id}>{machines.adresses}</li>;
+          return (
+            <li key={machines._id}>
+              {machines.adresses} ({machines.ip})
+              <button onClick={() => updateMachine(machines)}>Update</button>
+            </li>
+          );
         })}
       </ul>
     </div>
