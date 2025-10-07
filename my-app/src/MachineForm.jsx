@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 
 export const MachineForm = () => {
   const [machine, setMachine] = useState({
-    _id: "",
+    id: "",
     adresses: "",
     ip: "",
   });
@@ -12,7 +12,8 @@ export const MachineForm = () => {
     try {
       const result = await fetch("http://localhost:3000/machine");
       if (!result.ok) {
-        result.send("Failed to get fetch info");
+        console.log("Failed to get fetch info");
+        return;
       }
       const data = await result.json();
       setMachineList(data);
@@ -51,11 +52,25 @@ export const MachineForm = () => {
       <h2>New Create Machine</h2>
       <form onSubmit={handleSubmit}>
         <input
-          _id="text"
-          adresses="name"
+          type="text"
+          name="id"
+          value={machine.id}
+          onChange={handleChange}
+          placeholder="Machine ID"
+        />
+        <input
+          type="text"
+          name="adresses"
           value={machine.adresses}
           onChange={handleChange}
           placeholder="Machine name"
+        />
+        <input
+          type="text"
+          name="ip"
+          value={machine.ip}
+          onChange={handleChange}
+          placeholder="IP address"
         />
         <button type="submit">ADD machine</button>
       </form>
