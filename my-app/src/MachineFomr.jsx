@@ -25,10 +25,10 @@ export const MachineForm = () => {
   }, []);
 };
 
-const handleSubmit = async (e) => {
+export const handleSubmit = async (e) => {
   e.preventDefault();
   try {
-    const response = await fetch("http://localhost:3000/mechine", {
+    const response = await fetch("http://localhost:3000/machine", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(machine),
@@ -43,3 +43,22 @@ const handleSubmit = async (e) => {
     console.log(err);
   }
 };
+const handleChange = (e) => {
+  setMachine({ ...machine, [e.target.name]: e.target.value });
+};
+
+return (
+  <div>
+    <h2>New Create Machine</h2>
+    <form onSubmit={handleSubmit}>
+      <input
+        _id="text"
+        adresses="name"
+        value={machine.adresses}
+        onChange={handleChange}
+        placeholder="Machine name"
+      />
+      <button type="submit">ADD machine</button>
+    </form>
+  </div>
+);
