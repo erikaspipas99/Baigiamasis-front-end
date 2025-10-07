@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { updateMachine } from "./UpdateMachine";
+import { deleteMachine } from "./DeleteMachin";
 
 export const MachineForm = () => {
   const [machine, setMachine] = useState({
@@ -61,6 +62,8 @@ export const MachineForm = () => {
       fetchMachines();
     }
   };
+
+  const handleDelete = async;
 
   return (
     <div>
