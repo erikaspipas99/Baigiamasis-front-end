@@ -39,6 +39,8 @@ export const MachineForm = () => {
       }
       const data = await response.json();
       console.log("Done");
+      setMachine({ id: "", adresses: "", ip: "" });
+      fetchMachines();
     } catch (err) {
       console.log(err);
     }
@@ -78,7 +80,7 @@ export const MachineForm = () => {
       <h2>Machine List</h2>
       <ul>
         {machineList.map((machines) => {
-          <li key={machines._id}></li>;
+          return <li key={machines._id}>{machines.adresses}</li>;
         })}
       </ul>
     </div>
