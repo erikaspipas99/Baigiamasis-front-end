@@ -50,6 +50,18 @@ export const MachineForm = () => {
     setMachine({ ...machine, [e.target.name]: e.target.value });
   };
 
+  const handleUpdate = async (machine) => {
+    const updateMachineInfo = {
+      ...machine,
+      adresses: prompt("New mechine addresses", machine.adresses),
+      ip: prompt("New mechine IP", machine.ip),
+    };
+    const result = await updateMachine(updateMachineInfo);
+    if (result) {
+      fetchMachines();
+    }
+  };
+
   return (
     <div>
       <h2>New Create Machine</h2>
@@ -84,7 +96,7 @@ export const MachineForm = () => {
           return (
             <li key={machines._id}>
               {machines.adresses} ({machines.ip})
-              <button onClick={() => updateMachine(machines)}>Update</button>
+              <button onClick={() => handleUpdate(machines)}>Update</button>
             </li>
           );
         })}
