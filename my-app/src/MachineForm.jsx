@@ -63,9 +63,9 @@ export const MachineForm = () => {
     }
   };
 
-  const handleDelete = async (machine) => {
+  const handleDelete = async (_id) => {
     if (!window.confirm("Are you sure delete this machine?"));
-    const result = await deleteMachine(machine);
+    const result = await deleteMachine(_id);
     if (result) {
       fetchMachines();
     }
@@ -106,9 +106,7 @@ export const MachineForm = () => {
             <li key={machines._id}>
               {machines.adresses} ({machines.ip})
               <button onClick={() => handleUpdate(machines)}>Update</button>
-              <button onClick={() => handleDelete(machines.machine)}>
-                Delete
-              </button>
+              <button onClick={() => handleDelete(machines._id)}>Delete</button>
             </li>
           );
         })}
