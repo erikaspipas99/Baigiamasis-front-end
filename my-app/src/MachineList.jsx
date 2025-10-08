@@ -101,6 +101,8 @@ export const MachineList = () => {
               <strong> IP:</strong> {machines.ip}
               <button onClick={() => handleUpdate(machines)}>Update</button>
               <button onClick={() => handleDelete(machines._id)}>Delete</button>
+              {/* i ateiti info button, rinks duomenis is mysql */}
+              <button onClick={() => handleUpdate(machines._id)}>INFO</button>
             </li>
           );
         })}
