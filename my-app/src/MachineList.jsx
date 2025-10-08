@@ -7,6 +7,7 @@ export const MachineList = () => {
   const [filterId, setFilterId] = useState("");
   const [filterName, setFilterName] = useState("");
   const [filterIp, setFilterIp] = useState([]);
+  const [showFilter, setShowFilter] = useState(false);
 
   const fetchMachines = async () => {
     try {
@@ -56,27 +57,41 @@ export const MachineList = () => {
   return (
     <div>
       <h2>Machine List</h2>
-      <div>
-        <input
-          type="text"
-          placeholder="Filter by ID"
-          value={filterId}
-          onChange={(e) => setFilterId(e.target.value)}
-        />
-        <input
-          type="text"
-          placeholder="Filter by Name"
-          value={filterName}
-          onChange={(e) => setFilterName(e.target.value)}
-        />
-        <input
-          type="text"
-          placeholder="Filter by IP"
-          value={filterIp}
-          onChange={(e) => setFilterIp(e.target.value)}
-        />
-      </div>
-
+      <button onClick={() => setShowFilter(true)}>Filter</button>
+      {showFilter && (
+        <div>
+          <input
+            type="text"
+            placeholder="Filter by ID"
+            value={filterId}
+            onChange={(e) => setFilterId(e.target.value)}
+          />
+          <input
+            type="text"
+            placeholder="Filter by Name"
+            value={filterName}
+            onChange={(e) => setFilterName(e.target.value)}
+          />
+          <input
+            type="text"
+            placeholder="Filter by IP"
+            value={filterIp}
+            onChange={(e) => setFilterIp(e.target.value)}
+          />
+          <button onClick={() => setShowFilter(false)}>Search</button>
+          <button
+            onClick={() => {
+              setFilterId("");
+              setFilterName("");
+              setFilterIp("");
+              setShowFilterModal(false);
+            }}
+          ></button>
+          <button type="button" onClick={() => setShowFilter(false)}>
+            Cancel
+          </button>
+        </div>
+      )}
       <ul>
         {machineList.map((machines) => {
           return (
