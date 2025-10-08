@@ -6,7 +6,6 @@ export const MachineForm = () => {
     adresses: "",
     ip: "",
   });
-  const [machineList, setMachineList] = useState([]);
   const [showModal, setShowModal] = useState(false);
 
   const fetchMachines = async () => {

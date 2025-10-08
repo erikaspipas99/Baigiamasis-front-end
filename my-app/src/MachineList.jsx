@@ -1,8 +1,28 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { updateMachine } from "./UpdateMachine";
 import { deleteMachine } from "./DeleteMachin";
 
 export const MachineList = () => {
+  const [machineList, setMachineList] = useState([]);
+
+  const fetchMachines = async () => {
+    try {
+      const result = await fetch("http://localhost:3000/machine");
+      if (!result.ok) {
+        console.log("Failed to fetch machines");
+        return;
+      }
+      const data = await result.json();
+      setMachineList(data);
+    } catch (err) {
+      console.error("Fetch error:", err);
+    }
+  };
+
+  useEffect(() => {
+    fetchMachines();
+  }, []);
+
   const handleUpdate = async (machine) => {
     const updateMachineInfo = {
       ...machine,
@@ -22,21 +42,23 @@ export const MachineList = () => {
       fetchMachines();
     }
   };
-};
 
-<div>
-  <h2>Machine List</h2>
-  <ul>
-    {machineList.map((machines) => {
-      return (
-        <li key={machines._id}>
-          <strong>ID:</strong> {machines.id}
-          <strong> Name:</strong> {machines.adresses}
-          <strong> IP:</strong> {machines.ip}
-          <button onClick={() => handleUpdate(machines)}>Update</button>
-          <button onClick={() => handleDelete(machines._id)}>Delete</button>
-        </li>
-      );
-    })}
-  </ul>
-</div>;
+  return (
+    <div>
+      <h2>Machine List</h2>
+      <ul>
+        {machineList.map((machines) => {
+          return (
+            <li key={machines._id}>
+              <strong>ID:</strong> {machines.id}
+              <strong> Name:</strong> {machines.adresses}
+              <strong> IP:</strong> {machines.ip}
+              <button onClick={() => handleUpdate(machines)}>Update</button>
+              <button onClick={() => handleDelete(machines._id)}>Delete</button>
+            </li>
+          );
+        })}
+      </ul>
+    </div>
+  );
+};
