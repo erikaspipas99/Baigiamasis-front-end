@@ -75,32 +75,37 @@ export const MachineForm = () => {
 
   return (
     <div>
-      <h2>New Create Machine</h2>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          name="id"
-          value={machine.id}
-          onChange={handleChange}
-          placeholder="Machine ID"
-        />
-        <input
-          type="text"
-          name="adresses"
-          value={machine.adresses}
-          onChange={handleChange}
-          placeholder="Machine name"
-        />
-        <input
-          type="text"
-          name="ip"
-          value={machine.ip}
-          onChange={handleChange}
-          placeholder="IP address"
-        />
-        <button type="submit">ADD machine</button>
-      </form>
-
+      <h2>Machine Management</h2>
+      <button onClick={() => setShowModal(true)}>New machine</button>
+      {showModal && (
+        <div>
+          <h2>New Create Machine</h2>
+          <form onSubmit={handleSubmit}>
+            <input
+              type="text"
+              name="id"
+              value={machine.id}
+              onChange={handleChange}
+              placeholder="Machine ID"
+            />
+            <input
+              type="text"
+              name="adresses"
+              value={machine.adresses}
+              onChange={handleChange}
+              placeholder="Machine name"
+            />
+            <input
+              type="text"
+              name="ip"
+              value={machine.ip}
+              onChange={handleChange}
+              placeholder="IP address"
+            />
+            <button type="submit">ADD machine</button>
+          </form>
+        </div>
+      )}
       <h2>Machine List</h2>
       <ul>
         {machineList.map((machines) => {
