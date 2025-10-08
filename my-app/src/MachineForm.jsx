@@ -103,6 +103,9 @@ export const MachineForm = () => {
               placeholder="IP address"
             />
             <button type="submit">ADD machine</button>
+            <button type="button" onClick={() => setShowModal(false)}>
+              Cancel
+            </button>
           </form>
         </div>
       )}
