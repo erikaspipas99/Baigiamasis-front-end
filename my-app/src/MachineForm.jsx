@@ -5,6 +5,7 @@ export const MachineForm = () => {
     id: "",
     adresses: "",
     ip: "",
+    region: "",
   });
   const [showModal, setShowModal] = useState(false);
 
@@ -39,7 +40,7 @@ export const MachineForm = () => {
       }
       const data = await response.json();
       console.log("Done");
-      setMachine({ id: "", adresses: "", ip: "" });
+      setMachine({ id: "", adresses: "", ip: "", region: "" });
       setShowModal(false);
       fetchMachines();
     } catch (err) {
@@ -79,6 +80,15 @@ export const MachineForm = () => {
               onChange={handleChange}
               placeholder="IP address"
             />
+            <select
+              name="region"
+              value={machine.region}
+              onChange={handleChange}
+            >
+              <option value="">Region</option>
+              <option value="Kaunas">Kaunas</option>
+              <option value="Žematija">Žematija</option>
+            </select>
             <button type="submit">ADD machine</button>
             <button type="button" onClick={() => setShowModal(false)}>
               Cancel
