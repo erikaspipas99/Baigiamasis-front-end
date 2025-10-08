@@ -1,3 +1,29 @@
+import React from "react";
+import { updateMachine } from "./UpdateMachine";
+import { deleteMachine } from "./DeleteMachin";
+
+export const MachineList = () => {
+  const handleUpdate = async (machine) => {
+    const updateMachineInfo = {
+      ...machine,
+      adresses: prompt("New mechine addresses", machine.adresses),
+      ip: prompt("New mechine IP", machine.ip),
+    };
+    const result = await updateMachine(updateMachineInfo);
+    if (result) {
+      fetchMachines();
+    }
+  };
+
+  const handleDelete = async (_id) => {
+    if (!window.confirm("Are you sure delete this machine?"));
+    const result = await deleteMachine(_id);
+    if (result) {
+      fetchMachines();
+    }
+  };
+};
+
 <div>
   <h2>Machine List</h2>
   <ul>
@@ -14,23 +40,3 @@
     })}
   </ul>
 </div>;
-
-const handleUpdate = async (machine) => {
-  const updateMachineInfo = {
-    ...machine,
-    adresses: prompt("New mechine addresses", machine.adresses),
-    ip: prompt("New mechine IP", machine.ip),
-  };
-  const result = await updateMachine(updateMachineInfo);
-  if (result) {
-    fetchMachines();
-  }
-};
-
-const handleDelete = async (_id) => {
-  if (!window.confirm("Are you sure delete this machine?"));
-  const result = await deleteMachine(_id);
-  if (result) {
-    fetchMachines();
-  }
-};
