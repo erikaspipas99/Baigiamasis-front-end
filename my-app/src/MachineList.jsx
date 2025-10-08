@@ -6,7 +6,7 @@ export const MachineList = () => {
   const [machineList, setMachineList] = useState([]);
   const [filterId, setFilterId] = useState("");
   const [filterName, setFilterName] = useState("");
-  const [filterIp, setFilterIp] = useState([]);
+  const [filterIp, setFilterIp] = useState("");
   const [showFilter, setShowFilter] = useState(false);
 
   const fetchMachines = async () => {
@@ -49,9 +49,9 @@ export const MachineList = () => {
 
   const filterMachines = machineList.filter(
     (m) =>
-      m.id.toLowerCase().includes() &&
-      m.adresses.toLowerCase().includes() &&
-      m.ip.toLowerCase().includes()
+      m.id.toLowerCase().includes(filterId.toLocaleLowerCase()) &&
+      m.adresses.toLowerCase().includes(filterName.toLocaleLowerCase()) &&
+      m.ip.toLowerCase().includes(filterIp.toLocaleLowerCase())
   );
 
   return (
@@ -84,7 +84,7 @@ export const MachineList = () => {
               setFilterId("");
               setFilterName("");
               setFilterIp("");
-              setShowFilterModal(false);
+              setShowFilter(false);
             }}
           ></button>
           <button type="button" onClick={() => setShowFilter(false)}>
@@ -93,7 +93,7 @@ export const MachineList = () => {
         </div>
       )}
       <ul>
-        {machineList.map((machines) => {
+        {filterMachines.map((machines) => {
           return (
             <li key={machines._id}>
               <strong>ID:</strong> {machines.id}
