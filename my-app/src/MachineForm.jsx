@@ -9,6 +9,7 @@ export const MachineForm = () => {
     ip: "",
   });
   const [machineList, setMachineList] = useState([]);
+  const [showModal, setShowModal] = useState(false);
 
   const fetchMachines = async () => {
     try {
@@ -42,6 +43,7 @@ export const MachineForm = () => {
       const data = await response.json();
       console.log("Done");
       setMachine({ id: "", adresses: "", ip: "" });
+      setShowModal(false);
       fetchMachines();
     } catch (err) {
       console.log(err);
@@ -104,7 +106,9 @@ export const MachineForm = () => {
         {machineList.map((machines) => {
           return (
             <li key={machines._id}>
-              {machines.adresses} ({machines.ip})
+              <strong>ID:</strong> {machines.id}
+              <strong> Name:</strong> {machines.adresses}
+              <strong> IP:</strong> {machines.ip}
               <button onClick={() => handleUpdate(machines)}>Update</button>
               <button onClick={() => handleDelete(machines._id)}>Delete</button>
             </li>
