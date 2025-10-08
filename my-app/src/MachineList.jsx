@@ -1,9 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, use } from "react";
 import { updateMachine } from "./UpdateMachine";
 import { deleteMachine } from "./DeleteMachin";
 
 export const MachineList = () => {
   const [machineList, setMachineList] = useState([]);
+  const [filterId, setFilterId] = useState("");
+  const [filterName, setFilterName] = useState("");
+  const [filterIp, setFilterIp] = useState([]);
 
   const fetchMachines = async () => {
     try {
@@ -42,6 +45,13 @@ export const MachineList = () => {
       fetchMachines();
     }
   };
+
+  const filterMachines = machineList.filter(
+    (m) =>
+      m.id.toLowerCase().includes() &&
+      m.adresses.toLowerCase().includes() &&
+      m.ip.toLowerCase().includes()
+  );
 
   return (
     <div>
