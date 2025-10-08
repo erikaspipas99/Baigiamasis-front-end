@@ -1,4 +1,4 @@
-import React, { useState, useEffect, use } from "react";
+import React, { useState, useEffect } from "react";
 import { updateMachine } from "./UpdateMachine";
 import { deleteMachine } from "./DeleteMachin";
 
@@ -7,6 +7,7 @@ export const MachineList = () => {
   const [filterId, setFilterId] = useState("");
   const [filterName, setFilterName] = useState("");
   const [filterIp, setFilterIp] = useState("");
+  const [filterRegion, setFilterRegion] = useState("");
   const [showFilter, setShowFilter] = useState(false);
 
   const fetchMachines = async () => {
@@ -49,9 +50,10 @@ export const MachineList = () => {
 
   const filterMachines = machineList.filter(
     (m) =>
-      m.id.toLowerCase().includes(filterId.toLocaleLowerCase()) &&
-      m.adresses.toLowerCase().includes(filterName.toLocaleLowerCase()) &&
-      m.ip.toLowerCase().includes(filterIp.toLocaleLowerCase())
+      m.id.toLowerCase().includes(filterId.toLowerCase()) &&
+      m.adresses.toLowerCase().includes(filterName.toLowerCase()) &&
+      m.ip.toLowerCase().includes(filterIp.toLowerCase()) &&
+      m.region.toLowerCase().includes(filterRegion.toLowerCase())
   );
 
   return (
@@ -78,12 +80,20 @@ export const MachineList = () => {
             value={filterIp}
             onChange={(e) => setFilterIp(e.target.value)}
           />
+          {/* atsinaujina lista machine tik po refresh. o norejau prideti tik region select... */}
+          <input
+            type="text"
+            placeholder="Filter by Region"
+            value={filterRegion}
+            onChange={(e) => setFilterRegion(e.target.value)}
+          />
           <button onClick={() => setShowFilter(false)}>Search</button>
           <button
             onClick={() => {
               setFilterId("");
               setFilterName("");
               setFilterIp("");
+              setFilterRegion("");
               setShowFilter(false);
             }}
           ></button>
@@ -99,6 +109,7 @@ export const MachineList = () => {
               <strong>ID:</strong> {machines.id}
               <strong> Name:</strong> {machines.adresses}
               <strong> IP:</strong> {machines.ip}
+              <strong> Region:</strong> {machines.region}
               <button onClick={() => handleUpdate(machines)}>Update</button>
               <button onClick={() => handleDelete(machines._id)}>Delete</button>
               {/* i ateiti info button, rinks duomenis is mysql */}

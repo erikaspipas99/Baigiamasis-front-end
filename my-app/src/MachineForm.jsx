@@ -8,6 +8,7 @@ export const MachineForm = () => {
     region: "",
   });
   const [showModal, setShowModal] = useState(false);
+  const [machineList, setMachineList] = useState([]);
 
   const fetchMachines = async () => {
     try {
@@ -17,6 +18,7 @@ export const MachineForm = () => {
         return;
       }
       const data = await result.json();
+
       setMachineList(data);
     } catch (err) {
       console.error(err);
@@ -87,7 +89,7 @@ export const MachineForm = () => {
             >
               <option value="">Region</option>
               <option value="Kaunas">Kaunas</option>
-              <option value="Žematija">Žematija</option>
+              <option value="Žemaitija">Žemaitija</option>
             </select>
             <button type="submit">ADD machine</button>
             <button type="button" onClick={() => setShowModal(false)}>
