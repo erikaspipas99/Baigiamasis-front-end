@@ -56,6 +56,27 @@ export const MachineList = () => {
   return (
     <div>
       <h2>Machine List</h2>
+      <div>
+        <input
+          type="text"
+          placeholder="Filter by ID"
+          value={filterId}
+          onChange={(e) => setFilterId(e.target.value)}
+        />
+        <input
+          type="text"
+          placeholder="Filter by Name"
+          value={filterName}
+          onChange={(e) => setFilterName(e.target.value)}
+        />
+        <input
+          type="text"
+          placeholder="Filter by IP"
+          value={filterIp}
+          onChange={(e) => setFilterIp(e.target.value)}
+        />
+      </div>
+
       <ul>
         {machineList.map((machines) => {
           return (
