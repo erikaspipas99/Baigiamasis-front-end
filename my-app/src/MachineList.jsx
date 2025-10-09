@@ -12,6 +12,7 @@ export const MachineList = () => {
 
   const fetchMachines = async () => {
     try {
+      const token = localStorage.getItem("token");
       const result = await fetch("http://localhost:3000/machine");
       if (!result.ok) {
         console.log("Failed to fetch machines");

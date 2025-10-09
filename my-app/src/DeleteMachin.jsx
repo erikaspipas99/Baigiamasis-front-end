@@ -2,6 +2,7 @@ import React from "react";
 
 export const deleteMachine = async (_id) => {
   try {
+    const token = localStorage.getItem("token");
     const response = await fetch("http://localhost:3000/machine", {
       method: "DELETE",
       headers: { "Content-Type": "application/json" },
