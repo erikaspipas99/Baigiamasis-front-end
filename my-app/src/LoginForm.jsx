@@ -22,4 +22,24 @@ export function Login() {
       console.log("Bad login");
     }
   };
+  return (
+    <div>
+      <h2>Login</h2>
+      <form onSubmit={handleSubmit}>
+        <input
+          type="text"
+          value={username}
+          placeholder="Your Name"
+          onChange={(e) => setUsername(e.target.value)}
+        />
+        <input
+          type="text"
+          value={password}
+          placeholder="Yuor password"
+          onChange={(e) => setPassword(e.target.value)}
+        />
+        <button type="submit">Login</button>
+      </form>
+    </div>
+  );
 }
