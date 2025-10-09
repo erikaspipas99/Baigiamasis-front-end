@@ -4,6 +4,7 @@ import viteLogo from "/vite.svg";
 import "./App.css";
 import { MachineForm } from "./MachineForm";
 import { MachineList } from "./MachineList";
+import { Login } from "./LoginForm";
 
 function App() {
   const [token, setToken] = useState(localStorage.getItem("token"));
@@ -13,6 +14,15 @@ function App() {
       setToken(savedToken);
     }
   }, []);
+
+  const handleLogin = (newToken) => {
+    localStorage.setItem("token", newToken);
+    setToken(newToken);
+  };
+
+  if (!token) {
+    return <Login onLoginSuccess={handleLogin} />;
+  }
 
   return (
     <>
