@@ -7,12 +7,13 @@ import { jwtDecode } from "jwt-decode";
 
 function App() {
   const [token, setToken] = useState(localStorage.getItem("token"));
+  const [role, setRole] = useState(null);
   useEffect(() => {
     const savedToken = localStorage.getItem("token");
     if (savedToken) {
       setToken(savedToken);
       const decode = jwtDecode(savedToken);
-      setToken(decode.role);
+      setRole(decode.role);
     }
   }, []);
 
@@ -20,7 +21,7 @@ function App() {
     localStorage.setItem("token", newToken);
     setToken(newToken);
     const decode = jwtDecode(newToken);
-    setToken(decode.role);
+    setRole(decode.role);
   };
   const handleLogout = () => {
     localStorage.removeItem("tekon");
@@ -34,7 +35,7 @@ function App() {
   return (
     <>
       <button onClick={handleLogout}>Atsijungti</button>
-      <MachineForm></MachineForm>
+      {role === "admin" && <MachineForm />}
       <MachineList></MachineList>
     </>
   );
