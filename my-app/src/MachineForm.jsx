@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 
 export const MachineForm = () => {
+  const token = localStorage.getItem("token");
   const [machine, setMachine] = useState({
     id: "",
     adresses: "",
@@ -12,7 +13,13 @@ export const MachineForm = () => {
 
   const fetchMachines = async () => {
     try {
-      const result = await fetch("http://localhost:3000/machine");
+      const result = await fetch("http://localhost:3000/machine", {
+        headers: {
+          "Content-Type": "application/json",
+          autho: `${token}`,
+        },
+      });
+
       if (!result.ok) {
         console.log("Failed to get fetch info");
         return;
@@ -33,7 +40,7 @@ export const MachineForm = () => {
     try {
       const response = await fetch("http://localhost:3000/machine", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: { "Content-Type": "application/json", autho: `${token}` },
         body: JSON.stringify(machine),
       });
       if (!response.ok) {
