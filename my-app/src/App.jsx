@@ -28,7 +28,7 @@ function App() {
     setRegion(decode.region);
   };
   const handleLogout = () => {
-    localStorage.removeItem("tekon");
+    localStorage.removeItem("token");
     setToken(undefined);
   };
 

@@ -3,9 +3,11 @@ import React, { useState } from "react";
 export function Login({ loginCompleted }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setError("");
 
     try {
       const response = await fetch("http://localhost:3000/auth/login", {
@@ -15,9 +17,15 @@ export function Login({ loginCompleted }) {
       });
 
       const data = await response.json();
-      if (response.ok) {
+      if (!response.ok) {
         console.log("Login ok");
+        setError(data.error || "Blogi įvedami vartotojo duomenys");
+        return;
+      }
+      if (data.token) {
         loginCompleted(data.token);
+      } else {
+        setError("Blogi įvedami vartotojo duomenys");
       }
     } catch (err) {
       console.log("Bad login");
@@ -27,6 +35,7 @@ export function Login({ loginCompleted }) {
     <div>
       <h2>Login</h2>
       <form onSubmit={handleSubmit}>
+        {error && <div className="bad-info">{error}</div>}
         <input
           type="text"
           value={username}
@@ -34,7 +43,7 @@ export function Login({ loginCompleted }) {
           onChange={(e) => setUsername(e.target.value)}
         />
         <input
-          type="text"
+          type="password"
           value={password}
           placeholder="Yuor password"
           onChange={(e) => setPassword(e.target.value)}

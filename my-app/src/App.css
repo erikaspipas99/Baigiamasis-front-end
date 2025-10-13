@@ -40,3 +40,9 @@
 .read-the-docs {
   color: #888;
 }
+.bad-info {
+  color: red;
+  margin-bottom: 10px;
+  font-weight: bold;
+  text-align: left;
+}
