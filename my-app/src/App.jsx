@@ -3,7 +3,7 @@ import "./App.css";
 import { MachineForm } from "./MachineForm";
 import { MachineList } from "./MachineList";
 import { Login } from "./LoginForm";
-import jwtDecode from "jwt-decode";
+import { jwtDecode } from "jwt-decode";
 
 function App() {
   const [token, setToken] = useState(localStorage.getItem("token"));
@@ -19,6 +19,8 @@ function App() {
   const handleLogin = (newToken) => {
     localStorage.setItem("token", newToken);
     setToken(newToken);
+    const decode = jwtDecode(newToken);
+    setToken(decode.role);
   };
   const handleLogout = () => {
     localStorage.removeItem("tekon");
