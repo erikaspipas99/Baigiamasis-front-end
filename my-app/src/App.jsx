@@ -8,12 +8,15 @@ import { jwtDecode } from "jwt-decode";
 function App() {
   const [token, setToken] = useState(localStorage.getItem("token"));
   const [role, setRole] = useState(null);
+  const [region, setRegion] = useState(null);
+
   useEffect(() => {
     const savedToken = localStorage.getItem("token");
     if (savedToken) {
       setToken(savedToken);
       const decode = jwtDecode(savedToken);
       setRole(decode.role);
+      setRegion(decode.region);
     }
   }, []);
 
@@ -22,6 +25,7 @@ function App() {
     setToken(newToken);
     const decode = jwtDecode(newToken);
     setRole(decode.role);
+    setRegion(decode.region);
   };
   const handleLogout = () => {
     localStorage.removeItem("tekon");
