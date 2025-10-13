@@ -21,7 +21,7 @@ function App() {
   };
 
   if (!token) {
-    return <Login onLoginSuccess={handleLogin} />;
+    return <Login loginCompleted={handleLogin} />;
   }
 
   return (

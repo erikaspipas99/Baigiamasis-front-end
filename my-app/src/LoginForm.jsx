@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-export function Login() {
+export function Login({ loginCompleted }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
@@ -17,6 +17,7 @@ export function Login() {
       const data = await response.json();
       if (response.ok) {
         console.log("Login ok");
+        loginCompleted(data.token);
       }
     } catch (err) {
       console.log("Bad login");
