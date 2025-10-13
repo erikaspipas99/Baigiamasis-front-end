@@ -10,6 +10,13 @@ function App() {
   const [role, setRole] = useState(null);
   const [region, setRegion] = useState(null);
 
+  //   JUNGIMASIS SU MYSQL IMONES
+  // useEffect(() => {
+  //   fetch("http://localhost:3001/data")
+  //   .then((res) => res.json()).
+  //   then((data) => data.json());
+  // }, []);
+
   useEffect(() => {
     const savedToken = localStorage.getItem("token");
     if (savedToken) {
