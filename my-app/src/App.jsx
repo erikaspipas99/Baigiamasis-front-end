@@ -19,6 +19,10 @@ function App() {
     localStorage.setItem("token", newToken);
     setToken(newToken);
   };
+  const handleLogout = () => {
+    localStorage.removeItem("tekon");
+    setToken(undefined);
+  };
 
   if (!token) {
     return <Login loginCompleted={handleLogin} />;
@@ -26,6 +30,7 @@ function App() {
 
   return (
     <>
+      <button onClick={handleLogout}>Atsijungti</button>
       <MachineForm></MachineForm>
       <MachineList></MachineList>
     </>
