@@ -16,7 +16,7 @@ export const MachineForm = () => {
       const result = await fetch("http://localhost:3000/machine", {
         headers: {
           "Content-Type": "application/json",
-          autho: `${token}`,
+          Authorization: `Bearer ${token}`,
         },
       });
 
@@ -40,7 +40,10 @@ export const MachineForm = () => {
     try {
       const response = await fetch("http://localhost:3000/machine", {
         method: "POST",
-        headers: { "Content-Type": "application/json", autho: `${token}` },
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
         body: JSON.stringify(machine),
       });
       if (!response.ok) {

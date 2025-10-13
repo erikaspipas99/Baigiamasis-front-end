@@ -13,7 +13,9 @@ export const MachineList = () => {
   const fetchMachines = async () => {
     try {
       const token = localStorage.getItem("token");
-      const result = await fetch("http://localhost:3000/machine");
+      const result = await fetch("http://localhost:3000/machine", {
+        headers: { Authorization: `Bearer ${token}` },
+      });
       if (!result.ok) {
         console.log("Failed to fetch machines");
         return;
@@ -49,13 +51,15 @@ export const MachineList = () => {
     }
   };
 
-  const filterMachines = machineList.filter(
-    (m) =>
-      m.id.toLowerCase().includes(filterId.toLowerCase()) &&
-      m.adresses.toLowerCase().includes(filterName.toLowerCase()) &&
-      m.ip.toLowerCase().includes(filterIp.toLowerCase()) &&
-      m.region.toLowerCase().includes(filterRegion.toLowerCase())
-  );
+  const filterMachines = Array.isArray(machineList)
+    ? machineList.filter(
+        (m) =>
+          m.id.toLowerCase().includes(filterId.toLowerCase()) &&
+          m.adresses.toLowerCase().includes(filterName.toLowerCase()) &&
+          m.ip.toLowerCase().includes(filterIp.toLowerCase()) &&
+          m.region.toLowerCase().includes(filterRegion.toLowerCase())
+      )
+    : [];
 
   return (
     <div>
