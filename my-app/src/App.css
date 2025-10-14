@@ -88,3 +88,14 @@ button {
   font-weight: bold;
   text-align: left;
 }
+@media (max-width: 600px) {
+  .machine-button {
+    flex-direction: column;
+  }
+  button {
+    width: 100%;
+  }
+  .filter {
+    flex-direction: column;
+  }
+}
