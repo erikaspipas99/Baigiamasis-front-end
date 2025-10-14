@@ -50,7 +50,11 @@ function App() {
 
   return (
     <>
-      <button onClick={handleLogout}>Atsijungti</button>
+      <header>
+        <button className="exit" onClick={handleLogout}>
+          Atsijungti
+        </button>
+      </header>
       {role === "admin" && <MachineForm addNewMachine={postNewMachine} />}
       <MachineList machineList={machineList}></MachineList>
     </>
