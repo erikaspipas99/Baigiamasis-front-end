@@ -50,10 +50,6 @@ button {
   border-radius: 4px;
 }
 
-.machine-list {
-  padding-left: 12px;
-}
-
 .machine-list li {
   margin-bottom: 10px;
   background-color: wheat;
@@ -63,6 +59,7 @@ button {
 }
 .machine-button {
   margin-top: 10px;
+  margin-left: 30px;
   display: flex;
   gap: 12px;
   flex-wrap: wrap;
@@ -87,6 +84,9 @@ button {
   margin-bottom: 10px;
   font-weight: bold;
   text-align: left;
+}
+strong {
+  padding: 3px;
 }
 @media (max-width: 600px) {
   .machine-button {
