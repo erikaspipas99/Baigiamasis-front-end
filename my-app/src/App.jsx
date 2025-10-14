@@ -55,8 +55,10 @@ function App() {
           Atsijungti
         </button>
       </header>
-      {role === "admin" && <MachineForm addNewMachine={postNewMachine} />}
-      <MachineList machineList={machineList}></MachineList>
+      <main>
+        {role === "admin" && <MachineForm addNewMachine={postNewMachine} />}
+        <MachineList machineList={machineList}></MachineList>
+      </main>
     </>
   );
 }

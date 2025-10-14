@@ -20,9 +20,36 @@ button.exit {
   font-weight: bold;
   cursor: pointer;
 }
-button.logout:hover {
+button.exit:hover {
   background-color: #d32f2f;
 }
+main {
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 1rem;
+  background-color: rgb(143, 211, 143);
+  border-radius: 6px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+input,
+select {
+  padding: 7px;
+  border: 1px solid white;
+  border-radius: 4px;
+}
+button {
+  background-color: rgb(0, 128, 0);
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 4px;
+}
+
 #root {
   max-width: 1280px;
   margin: 0 auto;
