@@ -9,6 +9,7 @@ function App() {
   const [token, setToken] = useState(localStorage.getItem("token"));
   const [role, setRole] = useState(null);
   const [region, setRegion] = useState(null);
+  const [machineList, setMachineList] = useState(0);
 
   //   JUNGIMASIS SU MYSQL IMONES
   // useEffect(() => {
@@ -39,6 +40,10 @@ function App() {
     setToken(undefined);
   };
 
+  const postNewMachine = () => {
+    setMachineList((m) => m + 1);
+  };
+
   if (!token) {
     return <Login loginCompleted={handleLogin} />;
   }
@@ -46,8 +51,8 @@ function App() {
   return (
     <>
       <button onClick={handleLogout}>Atsijungti</button>
-      {role === "admin" && <MachineForm />}
-      <MachineList></MachineList>
+      {role === "admin" && <MachineForm addNewMachine={postNewMachine} />}
+      <MachineList machineList={machineList}></MachineList>
     </>
   );
 }

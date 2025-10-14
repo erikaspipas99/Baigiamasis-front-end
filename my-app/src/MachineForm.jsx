@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-export const MachineForm = () => {
+export const MachineForm = ({ addNewMachine }) => {
   const token = localStorage.getItem("token");
   const [machine, setMachine] = useState({
     id: "",
@@ -52,6 +52,11 @@ export const MachineForm = () => {
       }
       const data = await response.json();
       console.log("Done");
+      // kad atnaujintu sasara..
+      if (addNewMachine) {
+        addNewMachine();
+      }
+
       setMachine({ id: "", adresses: "", ip: "", region: "" });
       setShowModal(false);
       fetchMachines();

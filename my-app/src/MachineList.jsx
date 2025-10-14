@@ -29,7 +29,7 @@ export const MachineList = () => {
 
   useEffect(() => {
     fetchMachines();
-  }, []);
+  }, [machineList]);
 
   const handleUpdate = async (machine) => {
     const updateMachineInfo = {
@@ -85,7 +85,6 @@ export const MachineList = () => {
             value={filterIp}
             onChange={(e) => setFilterIp(e.target.value)}
           />
-          {/* atsinaujina lista machine tik po refresh. o norejau prideti tik region select... */}
           <input
             type="text"
             placeholder="Filter by Region"
