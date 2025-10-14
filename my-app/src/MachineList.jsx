@@ -62,7 +62,7 @@ export const MachineList = () => {
     : [];
 
   return (
-    <div>
+    <div className="machine-list">
       <h2>Machine List</h2>
       <button onClick={() => setShowFilter(true)}>Filter</button>
       {showFilter && (
@@ -114,10 +114,14 @@ export const MachineList = () => {
               <strong> Name:</strong> {machines.adresses}
               <strong> IP:</strong> {machines.ip}
               <strong> Region:</strong> {machines.region}
-              <button onClick={() => handleUpdate(machines)}>Update</button>
-              <button onClick={() => handleDelete(machines._id)}>Delete</button>
-              {/* i ateiti info button, rinks duomenis is mysql */}
-              <button onClick={() => handleUpdate(machines._id)}>INFO</button>
+              <div className="machine-button">
+                <button onClick={() => handleUpdate(machines)}>Update</button>
+                <button onClick={() => handleDelete(machines._id)}>
+                  Delete
+                </button>
+                {/* i ateiti info button, rinks duomenis is mysql */}
+                <button onClick={() => handleUpdate(machines._id)}>INFO</button>
+              </div>
             </li>
           );
         })}
