@@ -67,6 +67,15 @@ button {
   gap: 12px;
   flex-wrap: wrap;
 }
+.filter {
+  margin: 40px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.button-hidden {
+  background-color: rgb(143, 211, 143);
+}
 #root {
   max-width: 1280px;
   margin: 0 auto;

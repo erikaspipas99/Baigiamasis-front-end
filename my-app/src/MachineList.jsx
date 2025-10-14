@@ -66,7 +66,7 @@ export const MachineList = () => {
       <h2>Machine List</h2>
       <button onClick={() => setShowFilter(true)}>Filter</button>
       {showFilter && (
-        <div>
+        <div className="filter">
           <input
             type="text"
             placeholder="Filter by ID"
@@ -93,6 +93,7 @@ export const MachineList = () => {
           />
           <button onClick={() => setShowFilter(false)}>Search</button>
           <button
+            className="button-hidden"
             onClick={() => {
               setFilterId("");
               setFilterName("");
