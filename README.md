@@ -35,6 +35,7 @@ Machine Create
 Modal form for creatind new machine: (ID, Address, IP, Region)
 Triggers refresh on submnit
 
+File structure:
 -| App.jsx // Root component
 -| MachineForm.jsx // Machine created model
 -| MachineList.jsx // Machine list info, filter
