@@ -1,49 +1,40 @@
-# Baigiamasis-front-end
+##  Features
 
-Local Setup 
-Requirements:
-Visual Studio Code;
-node.js 18+;
-MongoSV atlas;
-(make sure the back-end is running on http://localhost:3000);
-Libary:
-react: 19.1.1,
-jwt-decode: 4.0.0;
+- 🔐 Authentication
+- 🖥️ Machine List with filtering
+- ➕ Create/Update/Delete machines
+- ✅ JWT-based authorization
 
-Project Setup:
-git clone https://github.com/erikaspipas99/Baigiamasis-front-end
+## 🧰 Tech Stack
+
+- Front-end: React (v19.1.1)
+- Auth: JWT + jwt-decode (v4.0.0)
+- Back-end: Node.js, Express
+- Database: MongoDB Atlas
+
+##  Prerequisites
+
+Make sure you have the following installed:
+- [Visual Studio Code](https://code.visualstudio.com/)
+- [Node.js 18+](https://nodejs.org/)
+- MongoDB Atlas account (or local MongoDB)
+
+##  Setup Instructions
+```bash
+# 1. Clone the repository
+git clone https://github.com/your-username/your-repo-name
+# 2. Navigate to the project directory
 cd baigiamas darbas/my-app
+# 3. Install dependencies
 npm install
+# 4. Start the development server
 npm run dev
 
-Authentication Checks
-In login (/auth/login), JWT is saved to localStorage;
-Token is deoceded using jwt-docedo to extra role and region;
-This token is the attached to all requests is the Authorization header; 
-
-Features:
-Login
-Accepsts "username" and "password",
-Pn success, stories JWT and redirect to mechine list.
-
-Machine List
-Fetches all machines(filtered by region if user is not admin)
-Display filter by: (ID, Name, IP, Region)
-Buttons to: (Update machine, Delete machine, show info).
-
-Machine Create
-Modal form for creatind new machine: (ID, Address, IP, Region)
-Triggers refresh on submnit
-
-File structure:
--| App.jsx // Root component
--| MachineForm.jsx // Machine created model
--| MachineList.jsx // Machine list info, filter
--| LoginForm.jsx // User login form
--| DeleteMachine.jsx // Delete machine method
--| UpdateMachine.jsx // Update machine method
--| app.css // Styles
-
-
-
-
+my-app/
+├── App.jsx              # Root component
+├── MachineForm.jsx      # Modal form to create machines
+├── MachineList.jsx      # Shows and filters machine list
+├── LoginForm.jsx        # Handles user login
+├── DeleteMachine.jsx    # Handles deletion of machines
+├── UpdateMachine.jsx    # Handles updates
+├── app.css              # Styling
