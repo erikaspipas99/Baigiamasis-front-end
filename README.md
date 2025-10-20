@@ -22,7 +22,7 @@ Make sure you have the following installed:
 ##  Setup Instructions
 ```bash
 # 1. Clone the repository
-git clone https://github.com/erikaspipas99/baigiamasis.git
+git clone https://github.com/erikaspipas99/Baigiamasis-front-end
 # 2. Navigate to the project directory
 cd baigiamas darbas/my-app
 # 3. Install dependencies
